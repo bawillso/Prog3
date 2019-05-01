@@ -1,8 +1,6 @@
 <?php
-
 // include the class that handles database connections
 require "../Bwill/database.php";
-
 // include the class containing functions/methods for "customer" table
 // Note: this application uses "customer" table, not "cusotmers" table
 require "customer.class.php";
@@ -18,7 +16,6 @@ if(isset($_POST["mobile"]))     $cust->mobile = $_POST["mobile"];
 // "fun" is short for "function" to be invoked 
 if(isset($_GET["fun"])) $fun = $_GET["fun"];
 else $fun = "display_list"; 
-
 switch ($fun) {
     case "display_list":        $cust->list_records();
         break;
@@ -42,4 +39,3 @@ switch ($fun) {
 	  
 	  
 }
-
