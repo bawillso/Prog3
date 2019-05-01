@@ -261,6 +261,13 @@ class Customer {
 				<a href='http://csis.svsu.edu/~bawillso/Bwill/hol.png' target='_blank'>UML</a><br />
 				<a href='http://csis.svsu.edu/~bawillso/Prog3/ScreenflowProg3.PNG' target='_blank'>Screenflow2</a><br />
 				<a href='http://csis.svsu.edu/~bawillso/Prog3/UMLPic.PNG' target='_blank'>UML2</a><br />
+				 <a href='https://github.com/bawillso/Prog3' target='_blank'>Github2</a><br />
+				<a href='http://csis.svsu.edu/~bawillso/Prog3/upload01.html' target='_blank'>Upload 1</a><br />
+				<a href='http://csis.svsu.edu/~bawillso/Prog3/upload02.html' target='_blank'>Upload 2</a><br />
+				<a href='http://csis.svsu.edu/~bawillso/Prog3/upload03.html' target='_blank'>Upload 3</a><br />
+				<a href='http://csis.svsu.edu/~bawillso/Prog3/Prog4ScreenFlow.PNG' target='_blank'>Screenflow Prog4</a><br />
+				<a href='http://csis.svsu.edu/~bawillso/Prog3/Prog4UML.PNG' target='_blank'>UML Prog4</a><br />
+				<a href='https://github.com/bawillso/Prog4/upload' target='_blank'>Github Prog4</a><br />
                 <div class='container'>
                     <p class='row'>
                         <h3>$this->title" . "s" . "</h3>
@@ -280,6 +287,8 @@ class Customer {
                             </thead>
                             <tbody>
 							<a class=btn href=login.php>Login</a>
+							<a class=btn href=join.php>Join</a>
+
                     ";
         $pdo = Database::connect();
         $sql = "SELECT * FROM $this->tableName ORDER BY id DESC";
