@@ -1,19 +1,19 @@
 <?php
-
-     session_start();
-		require "../Prog3/database.php";
-
- 
+     
+ 		session_start();
+require "../Bwill/database.php";
     if ( !empty($_POST)) {
         // keep track validation errors
         $nameError = null;
         $emailError = null;
         $mobileError = null;
+		$passwordError = null;
          
         // keep track post values
         $name = $_POST['name'];
         $email = $_POST['email'];
         $mobile = $_POST['mobile'];
+		$password = $_POST['password'];
          
         // validate input
         $valid = true;
@@ -36,18 +36,20 @@
             $mobileError = 'Please enter Mobile Number';
             $valid = false;
         }
-		
-		
-
+		if (empty($password)) {
+            $passwordError = 'Please enter a Password';
+            $valid = false;
+        }
+         
         // insert data
         if ($valid) {
             $pdo = Database::connect();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "INSERT INTO customer (id, name,email,mobile, password_hash) values(145,?, ?, ?, '123');";
+            $sql = "INSERT INTO customer (name,email,mobile,password_hash) values(?, ?, ?, ?)";
             $q = $pdo->prepare($sql);
-            $q->execute(array($name,$email,$mobile));
+            $q->execute(array($name,$email,$mobile,$password));
             Database::disconnect();
-            header("Location: login.php");
+            header("Location: customer.php");
         }
     }
 ?>
@@ -95,15 +97,22 @@
 					<?php endif;?>
 				</div>
 			  </div>
+			  <div class="control-group <?php echo !empty($passwordError)?'error':'';?>">
+				<label class="control-label">Password</label>
+				<div class="controls">
+					<input name="password" type="password"  placeholder="password" value="<?php echo !empty($password)?$password:'';?>">
+					<?php if (!empty($passwordError)): ?>
+						<span class="help-inline"><?php echo $passwordError;?></span>
+					<?php endif;?>
+				</div>
+			  </div>
 			  <div class="form-actions">
 				  <button type="submit" class="btn btn-success">Create</button>
-				  
+				  <a class="btn" href="customer.php">Back</a>
 				</div>
 			</form>
 		</div>
-             
-
-			 		 
+                 
     </div> <!-- /container -->
   </body>
 </html>
